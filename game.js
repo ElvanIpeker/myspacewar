@@ -11,9 +11,15 @@ class Game {
 
     }
     play() {
+        if (frameCount % 60 === 0) {
+            this.asteroids.push(new Asteroid());
+        }
+        this.asteroids.forEach((asteroid) => asteroid.draw())
+        this.asteroids = this.asteroids.filter((asteroid) => {
+            asteroid.draw();
+            return asteroid.height >= asteroid.height;
 
-
-
+        });
 
     }
 

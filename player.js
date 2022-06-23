@@ -1,32 +1,67 @@
 class Player {
     constructor() {
-        this.left = 600;
-        this.top = 550;
-        this.width = 50;
-        this.height = 50;
-        this.col = CANVAS_WIDTH / 64 / 2;
-
-        this.velocity = 0;
-        this.floor = 700;
-        this.shootArray = [];
+        this.x = CANVAS_WIDTH / 2
+        this.y = CANVAS_HEIGHT - 64
     }
+    incrementY() {
+        let y = this.y + 64
+        if (y > CANVAS_HEIGHT) {
+            this.y = 0
+        } else {
+            this.y = y;
+        }
+    }
+    decrementY() {
+        let y = this.y - 64
+        if (y < 0) {
+            this.y = CANVAS_HEIGHT - 64
+        } else {
+            this.y = y;
+        }
+    }
+    decrementX() {
+        let x = this.x - 64
+        if (x < 0) {
+            this.x = CANVAS_WIDTH - 64
+        } else {
+            this.x = x;
+
+        }
+
+    }
+    incrementX() {
+        let x = this.x + 64
+        if (x > CANVAS_WIDTH) {
+            this.x = 0
+
+
+        } else {
+            this.x = x
+        }
+
+    }
+
+
     moveUp() {
-        this.row = this.row - 1
-        image(this.ufoImage, this.col * 64, CANVAS_WIDTH - 64)
+        this.decrementY()
+        background(this.backgroundImage)
+        image(this.ufoImage, this.x, this.y)
     }
     moveDown() {
-        this.row = this.row + 1
-        image(this.ufoImage, this.col * 64, CANVAS_WIDTH - 64)
+        this.incrementY()
+        background(this.backgroundImage)
+        image(this.ufoImage, this.x, this.y)
     }
     moveLeft() {
-        this.col = this.col - 1
+
+        this.decrementX()
         background(this.backgroundImage)
-        image(this.ufoImage, this.col * 64, CANVAS_HEIGHT - 75)
+        image(this.ufoImage, this.x, this.y)
     }
     moveRight() {
-        this.col = this.col + 1
+        this.incrementX()
         background(this.backgroundImage)
-        image(this.ufoImage, this.col * 64, CANVAS_HEIGHT - 75)
+        image(this.ufoImage, this.x, this.y)
 
     }
 

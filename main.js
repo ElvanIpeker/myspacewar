@@ -1,34 +1,43 @@
 const game = new Game();
 const player = new Player();
-const asteroid = new Asteroid();
-
+const asteroidList = [];
 
 function setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-    loadImage("/images/background.png", (img) => {
-        player.backgroundImage = img
-        asteroid.backgroundImage = img
-        background(img);
+    loadImage("/images/background.png", (backgroundImage) => {
+        player.backgroundImage = backgroundImage
+        loadImage("/images/asteroid.png", (img) => {
+            ASTEROID_IMAGE = img;
+            BACKGROUND_IMAGE = backgroundImage;
+
+        })
+
+        background(backgroundImage);
     });
     loadImage("/images/ufo.png", (img) => {
         player.ufoImage = img;
         image(player.ufoImage, CANVAS_WIDTH / 2, CANVAS_HEIGHT - 75);
     });
-    loadImage("/images/asteroid.png", (img) => {
-        asteroid.asteroidImage = img
+    loadImage("/images/bullet.png", (img) => {
+        BULLET_IMAGE = img;
 
-    })
+    });
+
+
 }
 
 function preload() {
     this.img = loadImage("/images/background.png");
 }
 
+function draw() {
+    game.play()
+}
+
 function load() { }
 
 function keyPressed() {
     if (keyCode === LEFT_ARROW) {
-
         player.moveLeft();
     } else if (keyCode === RIGHT_ARROW) {
         player.moveRight();
@@ -37,10 +46,5 @@ function keyPressed() {
     } else if (keyCode === ARROW_DOWN) {
         player.moveDown();
     }
-}
-
-function draw() {
-
-
 }
 

@@ -1,10 +1,12 @@
 class Shoot {
-    constructor(top) {
-        this.top;
+    constructor() {
+
     }
+
+
     throwBullets() {
-        imgSize(40);
-        image("/images /bullet.png");
+        img(BULLET_IMAGE,);
+
     }
 
 
