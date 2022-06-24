@@ -3,6 +3,7 @@ class Game {
         this.player = new Player();
         this.asteroids = [];
         this.background = new Background();
+        this.bullet = [];
 
     }
     preload() {
@@ -20,6 +21,7 @@ class Game {
             return asteroid.height >= asteroid.height;
 
         });
+
 
     }
 

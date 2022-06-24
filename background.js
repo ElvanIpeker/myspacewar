@@ -4,7 +4,7 @@ class Background {
 
     }
     preload() {
-        this.img = ("/images /background.png");
+        this.img = ('/images/background.png');
 
     }
     drawBackground() {
