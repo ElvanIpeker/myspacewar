@@ -11,6 +11,7 @@ const ARROW_LEFT = 37;
 const SPACE_BAR = 32;
 const ENTER_KEY = 13;
 let ASTEROID_IMAGE = null;
+let UFO_IMAGE = null;
 let BACKGROUND_IMAGE = null;
 let BULLET_IMAGE = null;
 

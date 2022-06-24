@@ -3,6 +3,9 @@ class Player {
         this.x = CANVAS_WIDTH / 2
         this.y = CANVAS_HEIGHT - 64
     }
+    draw() {
+        image(UFO_IMAGE, this.x, this.y)
+    }
     incrementY() {
         let y = this.y + 64
         if (y > CANVAS_HEIGHT) {
@@ -27,7 +30,6 @@ class Player {
             this.x = x;
 
         }
-
     }
     incrementX() {
         let x = this.x + 64
@@ -40,29 +42,17 @@ class Player {
         }
 
     }
-
-
     moveUp() {
         this.decrementY()
-        background(this.backgroundImage)
-        image(this.ufoImage, this.x, this.y)
     }
     moveDown() {
         this.incrementY()
-        background(this.backgroundImage)
-        image(this.ufoImage, this.x, this.y)
     }
     moveLeft() {
-
         this.decrementX()
-        background(this.backgroundImage)
-        image(this.ufoImage, this.x, this.y)
     }
     moveRight() {
         this.incrementX()
-        background(this.backgroundImage)
-        image(this.ufoImage, this.x, this.y)
-
     }
 
 }
