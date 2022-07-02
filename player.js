@@ -1,7 +1,9 @@
 class Player {
     constructor() {
-        this.x = CANVAS_WIDTH / 2
-        this.y = CANVAS_HEIGHT - 64
+        this.x = CANVAS_WIDTH / 2;
+        this.y = CANVAS_HEIGHT - 64;
+        this.bullets = [];
+
     }
     draw() {
         image(UFO_IMAGE, this.x, this.y)
@@ -54,5 +56,9 @@ class Player {
     moveRight() {
         this.incrementX()
     }
+    shootBullet() {
+        this.bullets.push(new Bullet(this.x, this.y - 64))
+    }
+
 
 }
