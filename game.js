@@ -3,6 +3,7 @@ class Game {
         this.player = new Player();
         this.asteroids = [];
         this.isGameOver = false;
+        this.points = 0;
 
     }
     play() {
@@ -18,12 +19,21 @@ class Game {
                 this.asteroids.forEach(asteroid => asteroid.incrementY());
                 this.player.bullets.forEach(bullet => bullet.decrementY());
             }
+            textSize(30);
+            fill(255, 153, 51);
+            text(this.points, CANVAS_WIDTH - 72, 30);
+
+
             this.player.bullets.forEach((bullet) => bullet.draw());
             this.asteroids.forEach((asteroid) => asteroid.draw());
             this.asteroids = this.asteroids.filter((asteroid) => {
                 let hasCollided = this.player.bullets.some((bullet) => {
                     return (Math.abs(bullet.x - asteroid.x) < 64 && Math.abs(bullet.y - asteroid.y) < 64);
                 });
+                if (hasCollided) {
+                    this.points += 1;
+                }
+
                 return !hasCollided && asteroid.y <= CANVAS_HEIGHT;
             });
             this.player.bullets = this.player.bullets.filter((bullet) => {
@@ -41,7 +51,7 @@ class Game {
             background(GAME_OVER_IMAGE);
             textSize(30);
             fill(255, 153, 51);
-            text('Game Over! may be next time!', 72, CANVAS_HEIGHT - 72);
+            text('Game Over! may be next time!\nPoints: ' + this.points, 72, CANVAS_HEIGHT - 72);
             GAME_AUDIO.stop()
         }
 
